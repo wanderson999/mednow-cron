@@ -2,15 +2,15 @@ name: MedNow Cron
 
 on:
   schedule:
-    - cron: "* * * * *"   # roda todo minuto
-  workflow_dispatch:      # permitir rodar manualmente
+    - cron: "*/1 * * * *"   # Executa todo minuto
+  workflow_dispatch:       # Permite rodar manualmente também
 
 jobs:
-  ping-mednow-scheduler:
+  ping_scheduler:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Chamar Scheduler do MedNow
+      - name: Chamar API do MedNow Scheduler
         run: |
-          curl -X GET "https://mednow-one.vercel.app/api/scheduler/alarme" \
-          --silent --show-error
+          echo "Chamando https://mednow-one.vercel.app/api/scheduler/alarme"
+          curl -X GET "https://mednow-one.vercel.app/api/scheduler/alarme"
